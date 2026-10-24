@@ -1,0 +1,25 @@
+name: Bug report
+description: Something validates incorrectly, crashes, or does not match the docs
+labels: [bug]
+body:
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: A schema and an input, plus what you expected and what happened.
+      render: ts
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Valiq version
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and version (e.g. Node.js 22.4, Chrome 130)
+  - type: markdown
+    attributes:
+      value: Security problems should be reported privately; see SECURITY.md.

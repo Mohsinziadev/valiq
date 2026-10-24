@@ -1,0 +1,109 @@
+{
+  "name": "valiq",
+  "version": "0.1.0",
+  "description": "TypeScript-first schema validation with precise, structured errors, JSON Schema (2020-12, 2019-09, draft-07) support, Standard Schema compatibility and zero dependencies.",
+  "keywords": [
+    "validation",
+    "validator",
+    "schema",
+    "json-schema",
+    "typescript",
+    "type-inference",
+    "runtime-validation",
+    "parse",
+    "standard-schema",
+    "ajv-alternative",
+    "zod-alternative",
+    "form-validation",
+    "api-validation",
+    "data-validation",
+    "json"
+  ],
+  "author": "Mohsin Zia <mohsinziadev@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "typesVersions": {
+    "*": {
+      "json-schema": [
+        "./dist/json-schema/index.d.cts"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./json-schema": {
+      "import": {
+        "types": "./dist/json-schema/index.d.ts",
+        "default": "./dist/json-schema/index.js"
+      },
+      "require": {
+        "types": "./dist/json-schema/index.d.cts",
+        "default": "./dist/json-schema/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:types": "tsc -p type-tests/tsconfig.json",
+    "test:conformance": "vitest run tests/json-schema-suite.test.ts",
+    "conformance": "node --experimental-transform-types --no-warnings scripts/conformance-report.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "benchmark": "npm run build && node benchmarks/run.mjs",
+    "size": "node scripts/size.mjs",
+    "check:package": "publint --strict && attw --pack .",
+    "smoke": "node scripts/smoke-test.mjs",
+    "verify": "npm run lint && npm run format:check && npm run typecheck && npm run test:types && npm run test && npm run docs:check && npm run build && npm run check:package && npm run size && npm run smoke && npm run examples && npm run runtime-check",
+    "prepublishOnly": "npm run verify",
+    "docs:check": "node scripts/check-docs.mjs",
+    "examples": "node scripts/run-examples.mjs",
+    "runtime-check": "node scripts/runtime-check.mjs"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "eslint": "^10.13.0",
+    "fast-check": "^4.10.2",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "publint": "^0.3.25",
+    "rolldown": "^1.2.15",
+    "tinybench": "^6.2.2",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.0",
+    "valibot": "^1.5.0",
+    "vitest": "^5.0.5",
+    "zod": "^4.6.7"
+  }
+}

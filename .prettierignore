@@ -1,0 +1,6 @@
+dist
+coverage
+.scratch
+.smoke
+tests/fixtures
+package-lock.json

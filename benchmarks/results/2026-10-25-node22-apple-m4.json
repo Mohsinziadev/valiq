@@ -1,0 +1,263 @@
+{
+  "runtime": "Node.js v22.23.1 (darwin arm64)",
+  "versions": {
+    "valiq": "0.1.0",
+    "ajv": "8.20.0",
+    "zod": "4.6.7",
+    "valibot": "1.5.0"
+  },
+  "results": {
+    "valid object (5 fields, nested)": [
+      {
+        "task": "ajv",
+        "ops/s": 23297690,
+        "p50 (µs)": 0.04,
+        "p99 (µs)": 0.08,
+        "±%": 0.15,
+        "samples": 22585137
+      },
+      {
+        "task": "valiq safeParse",
+        "ops/s": 7106575,
+        "p50 (µs)": 0.13,
+        "p99 (µs)": 0.17,
+        "±%": 0.38,
+        "samples": 6933957
+      },
+      {
+        "task": "valiq is",
+        "ops/s": 7022641,
+        "p50 (µs)": 0.13,
+        "p99 (µs)": 0.17,
+        "±%": 0.03,
+        "samples": 6862374
+      },
+      {
+        "task": "valiq fromJSONSchema is",
+        "ops/s": 4100728,
+        "p50 (µs)": 0.25,
+        "p99 (µs)": 0.29,
+        "±%": 1.45,
+        "samples": 4019619
+      },
+      {
+        "task": "zod safeParse",
+        "ops/s": 3525503,
+        "p50 (µs)": 0.29,
+        "p99 (µs)": 0.37,
+        "±%": 2.51,
+        "samples": 3199458
+      },
+      {
+        "task": "valibot safeParse",
+        "ops/s": 2633107,
+        "p50 (µs)": 0.37,
+        "p99 (µs)": 0.46,
+        "±%": 0.31,
+        "samples": 2618776
+      }
+    ],
+    "invalid object, all errors collected": [
+      {
+        "task": "ajv (allErrors)",
+        "ops/s": 16597332,
+        "p50 (µs)": 0.08,
+        "p99 (µs)": 0.08,
+        "±%": 0.4,
+        "samples": 13739329
+      },
+      {
+        "task": "valibot safeParse",
+        "ops/s": 1581634,
+        "p50 (µs)": 0.63,
+        "p99 (µs)": 0.75,
+        "±%": 1.54,
+        "samples": 1558918
+      },
+      {
+        "task": "zod safeParse",
+        "ops/s": 1424716,
+        "p50 (µs)": 0.71,
+        "p99 (µs)": 1.71,
+        "±%": 4.27,
+        "samples": 926560
+      },
+      {
+        "task": "valiq safeParse",
+        "ops/s": 997925,
+        "p50 (µs)": 1,
+        "p99 (µs)": 1.13,
+        "±%": 0.29,
+        "samples": 975576
+      },
+      {
+        "task": "valiq fromJSONSchema safeParse",
+        "ops/s": 822661,
+        "p50 (µs)": 1.21,
+        "p99 (µs)": 1.37,
+        "±%": 0.2,
+        "samples": 812887
+      }
+    ],
+    "invalid object, first error only": [
+      {
+        "task": "ajv",
+        "ops/s": 25677132,
+        "p50 (µs)": 0.04,
+        "p99 (µs)": 0.04,
+        "±%": 1.39,
+        "samples": 30511581
+      },
+      {
+        "task": "valiq is",
+        "ops/s": 23856398,
+        "p50 (µs)": 0.04,
+        "p99 (µs)": 0.08,
+        "±%": 0.06,
+        "samples": 24901291
+      },
+      {
+        "task": "valibot abortEarly",
+        "ops/s": 10881929,
+        "p50 (µs)": 0.08,
+        "p99 (µs)": 0.13,
+        "±%": 2.21,
+        "samples": 9294449
+      },
+      {
+        "task": "valiq safeParse abortEarly",
+        "ops/s": 2452927,
+        "p50 (µs)": 0.42,
+        "p99 (µs)": 0.5,
+        "±%": 0.37,
+        "samples": 2399998
+      }
+    ],
+    "valid array of 1,000 objects": [
+      {
+        "task": "ajv",
+        "ops/s": 38307,
+        "p50 (µs)": 25.96,
+        "p99 (µs)": 29.67,
+        "±%": 0.2,
+        "samples": 38233
+      },
+      {
+        "task": "valiq safeParse",
+        "ops/s": 7832,
+        "p50 (µs)": 127.83,
+        "p99 (µs)": 138.35,
+        "±%": 0.05,
+        "samples": 7828
+      },
+      {
+        "task": "valiq fromJSONSchema is",
+        "ops/s": 4396,
+        "p50 (µs)": 228.21,
+        "p99 (µs)": 243.63,
+        "±%": 0.07,
+        "samples": 4394
+      },
+      {
+        "task": "zod safeParse",
+        "ops/s": 3576,
+        "p50 (µs)": 269.17,
+        "p99 (µs)": 544.48,
+        "±%": 0.81,
+        "samples": 3457
+      },
+      {
+        "task": "valibot safeParse",
+        "ops/s": 2723,
+        "p50 (µs)": 359.81,
+        "p99 (µs)": 641.59,
+        "±%": 0.72,
+        "samples": 2666
+      }
+    ],
+    "discriminated union, 300 items": [
+      {
+        "task": "ajv (oneOf)",
+        "ops/s": 114957,
+        "p50 (µs)": 8.58,
+        "p99 (µs)": 202.23,
+        "±%": 1.35,
+        "samples": 91547
+      },
+      {
+        "task": "zod discriminatedUnion",
+        "ops/s": 75153,
+        "p50 (µs)": 13.25,
+        "p99 (µs)": 14.71,
+        "±%": 0.75,
+        "samples": 71179
+      },
+      {
+        "task": "valiq safeParse",
+        "ops/s": 68286,
+        "p50 (µs)": 14.71,
+        "p99 (µs)": 15.58,
+        "±%": 0.2,
+        "samples": 68111
+      },
+      {
+        "task": "valiq fromJSONSchema is (oneOf)",
+        "ops/s": 27308,
+        "p50 (µs)": 36.79,
+        "p99 (µs)": 41.58,
+        "±%": 0.3,
+        "samples": 27240
+      },
+      {
+        "task": "valibot variant",
+        "ops/s": 16970,
+        "p50 (µs)": 57.42,
+        "p99 (µs)": 277.04,
+        "±%": 0.93,
+        "samples": 15675
+      }
+    ],
+    "cold start: define + first validation": [
+      {
+        "task": "valibot",
+        "ops/s": 898515,
+        "p50 (µs)": 1.08,
+        "p99 (µs)": 1.38,
+        "±%": 0.34,
+        "samples": 859055
+      },
+      {
+        "task": "valiq",
+        "ops/s": 519773,
+        "p50 (µs)": 1.92,
+        "p99 (µs)": 2.21,
+        "±%": 0.92,
+        "samples": 475678
+      },
+      {
+        "task": "valiq fromJSONSchema",
+        "ops/s": 42253,
+        "p50 (µs)": 23.37,
+        "p99 (µs)": 251.69,
+        "±%": 1.24,
+        "samples": 38114
+      },
+      {
+        "task": "zod",
+        "ops/s": 17035,
+        "p50 (µs)": 57.67,
+        "p99 (µs)": 757.48,
+        "±%": 6.07,
+        "samples": 13307
+      },
+      {
+        "task": "ajv compile",
+        "ops/s": 422,
+        "p50 (µs)": 2295.65,
+        "p99 (µs)": 3232.84,
+        "±%": 1.08,
+        "samples": 418
+      }
+    ]
+  }
+}

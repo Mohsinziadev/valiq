@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+.scratch
+.smoke
+*.tgz
+.DS_Store
+.size
+.docs-check
