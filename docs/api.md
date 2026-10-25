@@ -2,10 +2,10 @@
 
 ## Entry points
 
-| Import              | Exports                                                                                                  |
-| ------------------- | -------------------------------------------------------------------------------------------------------- |
-| `valiq`             | `v`, `toJSONSchema`, `ValiqError`, `isValiqError`, `formatPath`, `defaultMessage`, schema classes, types |
-| `valiq/json-schema` | `fromJSONSchema`, `JSONSchemaSchema`, `JSONSchemaError`, `toJSONSchema`, types                           |
+| Import                 | Exports                                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| `valiq-js`             | `v`, `toJSONSchema`, `ValiqError`, `isValiqError`, `formatPath`, `defaultMessage`, schema classes, types |
+| `valiq-js/json-schema` | `fromJSONSchema`, `JSONSchemaSchema`, `JSONSchemaError`, `toJSONSchema`, types                           |
 
 ## `v` — schema factories
 

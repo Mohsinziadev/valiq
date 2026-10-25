@@ -3,21 +3,21 @@
 ## Install
 
 ```sh
-npm install valiq
+npm install valiq-js
 ```
 
 Valiq has no dependencies. It needs Node.js 18+ or a modern browser, and works with both
 `import` and `require`:
 
 ```js
-import { v } from 'valiq'; // ESM
-const { v } = require('valiq'); // CommonJS
+import { v } from 'valiq-js'; // ESM
+const { v } = require('valiq-js'); // CommonJS
 ```
 
 JSON Schema support lives in a separate entry point so that builder-only apps don't ship it:
 
 ```js
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 ```
 
 For TypeScript, use `"strict": true`. Any `moduleResolution` works (`bundler`, `node16`,
@@ -26,7 +26,7 @@ For TypeScript, use `"strict": true`. Any `moduleResolution` works (`bundler`, `
 ## Your first schema
 
 ```ts
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const Todo = v.object({
   title: v.string().trim().min(1),
@@ -44,7 +44,7 @@ const todo = Todo.parse({ title: '  Write docs ' });
 ## Three ways to validate
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Email = v.string().email();
 const input: unknown = 'dev@example.com';
@@ -73,7 +73,7 @@ void email;
 and a `message`:
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Login = v.object({ email: v.string().email(), password: v.string().min(8) });
 const result = Login.safeParse({ email: 'x' });

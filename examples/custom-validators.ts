@@ -1,7 +1,7 @@
 // Custom rules: refinements, custom types, branded types and custom JSON Schema formats.
 import assert from 'node:assert/strict';
-import { v, type Infer } from 'valiq';
-import { fromJSONSchema } from 'valiq/json-schema';
+import { v, type Infer } from 'valiq-js';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 // A reusable rule on top of a built-in schema.
 const Slug = v

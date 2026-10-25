@@ -1,6 +1,6 @@
 // Nested JSON, arrays of objects, discriminated unions and readable error output.
 import assert from 'node:assert/strict';
-import { formatPath, v, type Infer } from 'valiq';
+import { formatPath, v, type Infer } from 'valiq-js';
 
 const Address = v.object({ street: v.string(), city: v.string(), country: v.string().length(2) });
 

@@ -35,7 +35,7 @@ formats), so code that switches on `issue.code` needs updating.
 Your JSON Schemas can usually be used as they are:
 
 ```ts
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 // Before: const validate = ajv.compile(schema); if (!validate(data)) console.log(validate.errors);
 const schema = { type: 'object', properties: { id: { type: 'integer' } }, required: ['id'] } as const;

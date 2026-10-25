@@ -1,4 +1,4 @@
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 export const Env = v.object({
   NODE_ENV: v.enum(['development', 'test', 'production']),

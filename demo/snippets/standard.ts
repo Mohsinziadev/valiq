@@ -1,4 +1,4 @@
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Login = v.object({ email: v.string().email(), password: v.string().min(8) });
 

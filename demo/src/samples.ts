@@ -1,4 +1,4 @@
-import { v, type AnySchema, type Issue } from 'valiq';
+import { v, type AnySchema, type Issue } from 'valiq-js';
 
 /** The schema behind the hero's terminal. Its output is computed by Valiq while the page is built. */
 export const User = v.object({

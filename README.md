@@ -9,7 +9,7 @@ once and get a runtime validator, an inferred TypeScript type, structured errors
 send to clients or write to logs, and JSON Schema in both directions.
 
 ```ts
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const User = v.object({
   id: v.string().uuid(),
@@ -64,8 +64,11 @@ valid data. See [Performance](#performance) for measured numbers.
 ## Installation
 
 ```sh
-npm install valiq
+npm install valiq-js
 ```
+
+The library is called Valiq; on npm it is published as `valiq-js`, so imports use
+`'valiq-js'` and `'valiq-js/json-schema'`.
 
 Requirements: Node.js 18 or later, or any modern browser (ES2022). TypeScript 5.0+ is recommended
 for inference; `strict` mode is expected.
@@ -73,7 +76,7 @@ for inference; `strict` mode is expected.
 ## Quick start
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Signup = v.object({
   name: v.string().trim().min(2),
@@ -128,7 +131,7 @@ String formats: `email`, `url` (http/https by default), `uuid`, `ipv4`, `ipv6`, 
 ## TypeScript inference
 
 ```ts
-import { v, type Infer, type Input } from 'valiq';
+import { v, type Infer, type Input } from 'valiq-js';
 
 const Settings = v.object({
   theme: v.enum(['light', 'dark']).default('light'),
@@ -150,7 +153,7 @@ annotation. See [docs/typescript.md](docs/typescript.md).
 ## Errors
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Order = v.object({
   items: v.array(v.object({ sku: v.string().min(3), qty: v.number().int().min(1) })).min(1),
@@ -182,7 +185,7 @@ check (`.min(3, 'Too short')`) or globally for localisation (`safeParse(data, { 
 ## JSON Schema
 
 ```ts
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 const Product = fromJSONSchema({
   type: 'object',
@@ -216,7 +219,7 @@ against Ajv in the test suite.
 ## Custom validation
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Password = v
   .string()
@@ -242,7 +245,7 @@ both.
 
 ```ts
 // Any library that accepts a Standard Schema accepts a Valiq schema:
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 const Login = v.object({ email: v.string().email(), password: v.string().min(8) });
 const result = await Login['~standard'].validate({ email: 'dev@example.com', password: 'hunter22!' });
 ```
@@ -276,7 +279,7 @@ the methodology is in [docs/performance.md](docs/performance.md).
 
 Bundle size (min+gzip, measured with `npm run size -- --compare`): an object schema with string,
 number and array checks costs 9.4 KB with Valiq, 20.7 KB with Zod, 5.5 KB with `zod/mini`,
-1.5 KB with Valibot and 34.6 KB with Ajv (no formats). Everything in `valiq` is 11.5 KB;
+1.5 KB with Valibot and 34.6 KB with Ajv (no formats). Everything in `valiq-js` is 11.5 KB;
 `fromJSONSchema` adds about 6 KB.
 
 ## Security

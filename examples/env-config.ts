@@ -1,7 +1,7 @@
 // Validating environment variables at startup. Environment values are strings, so numbers and
 // booleans use the opt-in, strict `v.coerce.*` conversions.
 import assert from 'node:assert/strict';
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const Env = v.object({
   NODE_ENV: v.enum(['development', 'test', 'production']).default('development'),

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { formatPath, type AnySchema, type Issue, type SafeParseResult } from 'valiq';
-import { fromJSONSchema, type JSONSchemaDocument } from 'valiq/json-schema';
+import { formatPath, type AnySchema, type Issue, type SafeParseResult } from 'valiq-js';
+import { fromJSONSchema, type JSONSchemaDocument } from 'valiq-js/json-schema';
 import { CreateOrder } from '../snippets/playground/order';
 import { Env } from '../snippets/playground/env';
 import { Signup } from '../snippets/playground/signup';

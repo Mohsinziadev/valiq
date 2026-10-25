@@ -2,8 +2,8 @@
 // is used and caches the result on the schema object; creating schemas inside a request handler
 // would repeat that work on every call.
 import assert from 'node:assert/strict';
-import { v } from 'valiq';
-import { fromJSONSchema } from 'valiq/json-schema';
+import { v } from 'valiq-js';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 const Event = v.union([
   v.object({ type: v.literal('click'), x: v.number(), y: v.number() }),

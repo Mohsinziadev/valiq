@@ -6,7 +6,7 @@ Its type-level behaviour is covered by regression tests in [`type-tests/`](../ty
 ## Inferring types
 
 ```ts
-import { v, type Infer, type Input } from 'valiq';
+import { v, type Infer, type Input } from 'valiq-js';
 
 const Product = v.object({
   id: v.string(),
@@ -38,7 +38,7 @@ Rules:
 ## Unions narrow
 
 ```ts
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const Result = v.union([
   v.object({ ok: v.literal(true), value: v.number() }),
@@ -57,7 +57,7 @@ void show;
 `schema.is(value)` narrows `value` to the schema's input type:
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Point = v.object({ x: v.number(), y: v.number() });
 
@@ -71,7 +71,7 @@ void length;
 ## Brands
 
 ```ts
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const UserId = v.string().uuid().brand<'UserId'>();
 const OrderId = v.string().uuid().brand<'OrderId'>();
@@ -91,7 +91,7 @@ Brands exist only in the type system.
 TypeScript cannot infer a type that refers to itself, so annotate recursive schemas:
 
 ```ts
-import { v, type Schema } from 'valiq';
+import { v, type Schema } from 'valiq-js';
 
 type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
 
@@ -103,7 +103,7 @@ const Json: Schema<Json> = v.lazy(() =>
 ## Writing functions that accept schemas
 
 ```ts
-import { v, type AnySchema, type Infer } from 'valiq';
+import { v, type AnySchema, type Infer } from 'valiq-js';
 
 function parseOrDefault<S extends AnySchema>(schema: S, value: unknown, fallback: Infer<S>): Infer<S> {
   const result = schema.safeParse(value);
@@ -125,7 +125,7 @@ of nested references). Anything else infers as `unknown`; use `.typed<T>()` to s
 yourself:
 
 ```ts
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 const loaded: Record<string, unknown> = { type: 'object', required: ['id'] }; // e.g. read from disk
 const Thing = fromJSONSchema(loaded).typed<{ id: string }>();
@@ -145,7 +145,7 @@ Valiq schemas implement `StandardSchemaV1<Input, Output>`, so
 These are rejected at compile time (and tested):
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const User = v.object({ id: v.string() });
 // @ts-expect-error -- min() takes a number

@@ -7,8 +7,8 @@ export default defineConfig({
   resolve: {
     // Examples import the package by name; tests run them against the sources.
     alias: [
-      { find: /^valiq\/json-schema$/, replacement: src('json-schema/index.ts') },
-      { find: /^valiq$/, replacement: src('index.ts') },
+      { find: /^valiq-js\/json-schema$/, replacement: src('json-schema/index.ts') },
+      { find: /^valiq-js$/, replacement: src('index.ts') },
     ],
   },
   test: {

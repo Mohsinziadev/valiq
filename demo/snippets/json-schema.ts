@@ -1,4 +1,4 @@
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 export const Product = fromJSONSchema({
   type: 'object',

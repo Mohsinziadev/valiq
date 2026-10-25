@@ -2,7 +2,7 @@
 //   ESM  — emitted by tsc file-by-file, so `export * as v` stays a static namespace that bundlers
 //          can tree-shake, with a .d.ts next to every module.
 //   CJS  — bundled by rolldown with the same file layout, with .d.cts copies of the declarations.
-// Entry points: "valiq" (dist/index) and "valiq/json-schema" (dist/json-schema/index).
+// Entry points: "valiq-js" (dist/index) and "valiq-js/json-schema" (dist/json-schema/index).
 import { execFileSync } from 'node:child_process';
 import { readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';

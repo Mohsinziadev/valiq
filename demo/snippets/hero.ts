@@ -1,4 +1,4 @@
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const User = v.object({
   id: v.string().uuid(),

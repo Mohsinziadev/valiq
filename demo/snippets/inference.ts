@@ -1,4 +1,4 @@
-import { v, type Infer, type Input } from 'valiq';
+import { v, type Infer, type Input } from 'valiq-js';
 
 export const Settings = v.object({
   theme: v.enum(['light', 'dark']).default('light'),

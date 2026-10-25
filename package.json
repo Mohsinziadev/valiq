@@ -1,5 +1,5 @@
 {
-  "name": "valiq",
+  "name": "valiq-js",
   "version": "0.1.0",
   "description": "TypeScript-first schema validation with precise, structured errors, JSON Schema (2020-12, 2019-09, draft-07) support, Standard Schema compatibility and zero dependencies.",
   "keywords": [

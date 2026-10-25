@@ -1,4 +1,4 @@
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Order = v.object({
   items: v.array(v.object({ sku: v.string().min(3), qty: v.number().int().min(1) })).min(1),

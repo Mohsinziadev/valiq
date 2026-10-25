@@ -17,7 +17,7 @@ interface IssueBase {
 The `Issue` type is a discriminated union on `code`, so checking the code narrows the extra fields:
 
 ```ts
-import { v, type Issue } from 'valiq';
+import { v, type Issue } from 'valiq-js';
 
 function describe(issue: Issue): string {
   if (issue.code === 'too_small') return `needs ${issue.minimum}`; // minimum is typed
@@ -62,7 +62,7 @@ Paths are arrays of keys and indexes, so they are unambiguous even for keys cont
 `formatPath` turns them into JavaScript notation:
 
 ```ts
-import { formatPath } from 'valiq';
+import { formatPath } from 'valiq-js';
 
 formatPath(['items', 0, 'sku']); // 'items[0].sku'
 formatPath(['headers', 'content-type']); // 'headers["content-type"]'
@@ -74,7 +74,7 @@ formatPath([]); // ''
 `parse()` throws, and `safeParse()` returns, a `ValiqError`:
 
 ```ts
-import { isValiqError, v } from 'valiq';
+import { isValiqError, v } from 'valiq-js';
 
 const Age = v.number().int().min(0);
 
@@ -106,7 +106,7 @@ errors thrown by `parse` have normal stack traces.
 Per check, as a string or a function of the issue:
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Username = v
   .string({ message: 'Username must be text' })
@@ -121,7 +121,7 @@ Pass `messages` to translate default messages. It is called for every issue that
 per-check message; return `undefined` to keep the default:
 
 ```ts
-import { v, type Issue } from 'valiq';
+import { v, type Issue } from 'valiq-js';
 
 const de = (issue: Issue): string | undefined => {
   switch (issue.code) {
@@ -154,7 +154,7 @@ keyed by email address), filter `path` before logging.
 Issues are designed to be returned to clients as they are:
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Body = v.object({ email: v.string().email() }).strict();
 

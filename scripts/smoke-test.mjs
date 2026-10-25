@@ -24,8 +24,8 @@ run('npm', ['install', '--silent', '--no-audit', '--no-fund', resolve(dir, tarba
 
 const esm = `
 import assert from 'node:assert/strict';
-import { v, ValiqError, toJSONSchema } from 'valiq';
-import { fromJSONSchema } from 'valiq/json-schema';
+import { v, ValiqError, toJSONSchema } from 'valiq-js';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 const User = v.object({ email: v.string().email(), age: v.number().int().min(18) });
 assert.deepEqual(User.parse({ email: 'dev@example.com', age: 30 }), { email: 'dev@example.com', age: 30 });
 const bad = User.safeParse({ email: 'x', age: 1 });
@@ -40,16 +40,16 @@ console.log('esm ok');
 `;
 const cjs = `
 const assert = require('node:assert/strict');
-const { v, isValiqError } = require('valiq');
-const { fromJSONSchema, JSONSchemaError } = require('valiq/json-schema');
+const { v, isValiqError } = require('valiq-js');
+const { fromJSONSchema, JSONSchemaError } = require('valiq-js/json-schema');
 assert.equal(v.string().min(2).is('ab'), true);
 try { v.number().parse('1'); assert.fail(); } catch (e) { assert.ok(isValiqError(e)); }
 assert.throws(() => fromJSONSchema({ tpye: 'string' }), JSONSchemaError);
 console.log('cjs ok');
 `;
 const ts = `
-import { v, type Infer } from 'valiq';
-import { fromJSONSchema } from 'valiq/json-schema';
+import { v, type Infer } from 'valiq-js';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 const User = v.object({ id: v.string(), tags: v.array(v.string()).optional() });
 type User = Infer<typeof User>;
 const user: User = { id: 'a' };

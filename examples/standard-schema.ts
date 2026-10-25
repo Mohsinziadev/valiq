@@ -2,7 +2,7 @@
 // Standard Schema (tRPC, TanStack Form, React Hook Form resolvers, Hono validators, ...) accept
 // Valiq schemas directly. This example uses the interface the same way such a library would.
 import assert from 'node:assert/strict';
-import { v, type StandardSchemaV1 } from 'valiq';
+import { v, type StandardSchemaV1 } from 'valiq-js';
 
 async function validateWithAnyLibrary<T>(schema: StandardSchemaV1<unknown, T>, value: unknown): Promise<T> {
   const result = await schema['~standard'].validate(value);

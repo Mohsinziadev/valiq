@@ -1,4 +1,4 @@
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 export const Signup = v
   .object({

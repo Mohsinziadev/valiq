@@ -6,7 +6,7 @@
 receives the output (after defaults and transforms) and returns `true` when the value is valid.
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Even = v
   .number()
@@ -44,7 +44,7 @@ Things to know:
 `v.custom` creates a schema from a predicate, for types that have no built-in schema:
 
 ```ts
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const Bytes = v.custom((value): value is Uint8Array => value instanceof Uint8Array, 'Expected binary data');
 type Bytes = Infer<typeof Bytes>; // Uint8Array
@@ -58,7 +58,7 @@ For class instances, `v.instance(File)` is shorter and reports `invalid_type` wi
 ## transform and pipe
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 // "12,500" → 12500, then validate the number
 const Amount = v
@@ -82,7 +82,7 @@ void [Amount, Tags];
 Schemas are values, so a rule is a function that returns or extends a schema:
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const password = () =>
   v
@@ -98,7 +98,7 @@ void Signup;
 ## Custom JSON Schema formats
 
 ```ts
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 const Schema = fromJSONSchema(
   { type: 'object', properties: { sku: { type: 'string', format: 'sku' } } },

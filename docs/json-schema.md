@@ -4,15 +4,15 @@ Valiq compiles JSON Schema documents into the same kind of schema the builder AP
 exports builder schemas to JSON Schema.
 
 ```ts
-import { fromJSONSchema, toJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema, toJSONSchema } from 'valiq-js/json-schema';
 ```
 
-`toJSONSchema` is also exported from `valiq`.
+`toJSONSchema` is also exported from `valiq-js`.
 
 ## fromJSONSchema
 
 ```ts
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 const Address = fromJSONSchema({
   $schema: 'https://json-schema.org/draft/2020-12/schema',
@@ -64,7 +64,7 @@ reuse the result.
 Parse options (`abortEarly`, `maxIssues`, `maxDepth`, `messages`) work as for any schema.
 
 ```ts
-import { fromJSONSchema } from 'valiq/json-schema';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 const address = { $id: 'https://example.com/address.json', type: 'object', required: ['city'] } as const;
 
@@ -168,7 +168,7 @@ internationalised formats (`idn-*`, `iri*`) and punycode validation for `hostnam
 ## toJSONSchema
 
 ```ts
-import { toJSONSchema, v } from 'valiq';
+import { toJSONSchema, v } from 'valiq-js';
 
 const User = v
   .object({

@@ -18,7 +18,7 @@ First release.
   `refine`, `transform`, `pipe`, `brand` and `meta` wrappers.
 - Structured issues with stable codes, exact paths and constraint details; `ValiqError` with
   `flatten()` and `format()`; per-check messages and a `messages` option for localisation.
-- `valiq/json-schema`: `fromJSONSchema` for draft 2020-12, 2019-09 and draft-07 with strict
+- `valiq-js/json-schema`: `fromJSONSchema` for draft 2020-12, 2019-09 and draft-07 with strict
   keyword checking, 15 formats, custom formats, registered remote schemas and type inference from
   `as const` schemas. Passes every runnable test of the official JSON-Schema-Test-Suite (required
   suites); `unevaluated*`, `$dynamicRef` and `$recursiveRef` are rejected as unsupported.

@@ -12,8 +12,8 @@ export default defineConfig({
   plugins: [react(), content()],
   resolve: {
     alias: [
-      { find: /^valiq\/json-schema$/, replacement: r('../src/json-schema/index.ts') },
-      { find: /^valiq$/, replacement: r('../src/index.ts') },
+      { find: /^valiq-js\/json-schema$/, replacement: r('../src/json-schema/index.ts') },
+      { find: /^valiq-js$/, replacement: r('../src/index.ts') },
     ],
   },
   server: { fs: { allow: [r('..')] } },

@@ -38,7 +38,7 @@ await writeFile(
       skipLibCheck: true,
       allowImportingTsExtensions: true,
       types: [],
-      paths: { valiq: ['../src/index.ts'], 'valiq/json-schema': ['../src/json-schema/index.ts'] },
+      paths: { 'valiq-js': ['../src/index.ts'], 'valiq-js/json-schema': ['../src/json-schema/index.ts'] },
     },
     files,
   }),

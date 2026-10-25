@@ -6,7 +6,7 @@ A schema is an immutable object. Every method returns a new schema and leaves th
 was, so schemas can be shared and extended freely:
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Name = v.string().trim().min(1);
 const ShortName = Name.max(20); // Name itself is unchanged
@@ -61,7 +61,7 @@ A schema has an input type (what it accepts) and an output type (what `parse` re
 differ when defaults or transforms are involved:
 
 ```ts
-import { v, type Infer, type Input } from 'valiq';
+import { v, type Infer, type Input } from 'valiq-js';
 
 const Page = v.object({ size: v.number().default(20), query: v.string().transform((q) => q.split(' ')) });
 
@@ -103,7 +103,7 @@ without validating its items, and recursive schemas stop at `maxDepth` (default 
 `too_deep` issue.
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Ids = v.array(v.string().uuid()).max(1000);
 Ids.safeParse(['x', 'y'], { abortEarly: true }); // one issue

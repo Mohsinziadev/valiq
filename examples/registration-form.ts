@@ -1,6 +1,6 @@
 // A registration form: per-field messages, a cross-field rule, and errors grouped for display.
 import assert from 'node:assert/strict';
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 export const Registration = v
   .object({

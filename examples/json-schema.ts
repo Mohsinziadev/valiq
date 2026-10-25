@@ -1,7 +1,7 @@
 // Using existing JSON Schema documents, and exporting Valiq schemas to JSON Schema (e.g. OpenAPI).
 import assert from 'node:assert/strict';
-import { toJSONSchema, v, type Infer } from 'valiq';
-import { fromJSONSchema } from 'valiq/json-schema';
+import { toJSONSchema, v, type Infer } from 'valiq-js';
+import { fromJSONSchema } from 'valiq-js/json-schema';
 
 // 1. Validate with a JSON Schema. `as const` lets TypeScript infer the data type.
 const Product = fromJSONSchema({

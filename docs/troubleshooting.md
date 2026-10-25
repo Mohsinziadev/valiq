@@ -43,7 +43,7 @@ input is untouched.
 async checks (such as database lookups) after validation.
 
 **Does Valiq work in the browser?** Yes. It uses standard JavaScript only and has no
-dependencies. Import `valiq/json-schema` only if you need it, so bundlers can leave it out.
+dependencies. Import `valiq-js/json-schema` only if you need it, so bundlers can leave it out.
 
 **Why are there two email rules?** `v.string().email()` is what web forms usually want (no quoted
 local parts, a dot in the domain). JSON Schema's `email` format is defined by RFC 5321 and allows

@@ -1,7 +1,7 @@
 // Validating a JSON request body in a plain Node.js HTTP handler (no framework needed).
 // The same pattern works in Express, Fastify, Hono or Next.js route handlers.
 import assert from 'node:assert/strict';
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const CreateOrder = v
   .object({

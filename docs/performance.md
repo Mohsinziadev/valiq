@@ -98,7 +98,7 @@ data. Run the suite on your own hardware and workloads before drawing conclusion
 | ---------------------------------------- | -------: | -------: |
 | Valiq: `v.string()` only                 |  19.2 KB |   6.9 KB |
 | Valiq: object with string, number, array |  28.3 KB |   9.4 KB |
-| Valiq: everything in `valiq`             |  36.0 KB |  11.5 KB |
+| Valiq: everything in `valiq-js`          |  36.0 KB |  11.5 KB |
 | Valiq: `fromJSONSchema`                  |  38.6 KB |  12.8 KB |
 | Valiq: both entry points                 |  56.8 KB |  17.5 KB |
 | Zod 4: same object                       |  73.6 KB |  20.7 KB |

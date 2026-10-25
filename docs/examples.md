@@ -23,7 +23,7 @@ and, for the second, React Hook Form, which this repository does not install.
 
 ```tsx
 import { useState } from 'react';
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Contact = v.object({
   email: v.string().trim().email('Enter a valid email'),
@@ -58,7 +58,7 @@ export function ContactForm() {
 ```tsx
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { useForm } from 'react-hook-form';
-import { v, type Infer } from 'valiq';
+import { v, type Infer } from 'valiq-js';
 
 const Profile = v.object({ name: v.string().min(2), age: v.coerce.number().int().min(13) });
 
@@ -85,7 +85,7 @@ tRPC input validators and TanStack Form.
 Illustrative (Express is not installed here):
 
 ```js
-import { isValiqError } from 'valiq';
+import { isValiqError } from 'valiq-js';
 
 export const validateBody = (schema) => (req, res, next) => {
   const result = schema.safeParse(req.body);

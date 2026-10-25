@@ -20,8 +20,8 @@
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
     "paths": {
-      "valiq": ["./src/index.ts"],
-      "valiq/json-schema": ["./src/json-schema/index.ts"]
+      "valiq-js": ["./src/index.ts"],
+      "valiq-js/json-schema": ["./src/json-schema/index.ts"]
     }
   },
   "include": ["src", "tests", "type-tests", "benchmarks", "examples", "scripts", "*.config.ts"]

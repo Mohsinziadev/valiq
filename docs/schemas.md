@@ -1,6 +1,6 @@
 # Schemas
 
-All factories live on the `v` namespace: `import { v } from 'valiq'`. Factories that check a type
+All factories live on the `v` namespace: `import { v } from 'valiq-js'`. Factories that check a type
 accept `{ message }` to customise the `invalid_type` message, e.g. `v.string({ message: 'Name must be text' })`.
 Checks accept a message string or `{ message }`, where a message is a string or a function of the
 issue.
@@ -35,7 +35,7 @@ All format checks are linear-time (no ReDoS) and reject oversized input cheaply.
 | `isoDateTime({ local: true })` | `YYYY-MM-DDTHH:MM[:SS[.fff]]` without offset — the format of `<input type="datetime-local">`.                                                                                                                                                                                                                                                              |
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Website = v.string().url(); // http(s) only
 const Link = v.string().url({ protocols: ['https', 'mailto'] });
@@ -75,7 +75,7 @@ Accepts `Date` instances whose time is valid (`new Date('nope')` is rejected). `
 ## Literals and enums
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Yes = v.literal('yes'); // compared with ===
 const Status = v.enum(['draft', 'published', 'archived']);
@@ -95,7 +95,7 @@ Failures produce `invalid_value` with the allowed `values`.
 ## Objects — `v.object(shape)`
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const User = v.object({
   id: v.string(),
@@ -125,7 +125,7 @@ itself, since they may no longer hold for the new shape.
 ## Arrays and tuples
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Tags = v.array(v.string()).min(1).max(10).unique();
 const Point = v.tuple([v.number(), v.number()]);
@@ -140,7 +140,7 @@ without its items being validated.
 ## Records — `v.record(key, value)`
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Headers = v.record(v.string().regex(/^[a-z-]+$/), v.string());
 const Flags = v.record(v.enum(['beta', 'darkMode']), v.boolean()); // keys optional in the type
@@ -153,7 +153,7 @@ every value with the value schema.
 ## Unions and intersections
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Id = v.union([v.string().uuid(), v.number().int()]);
 
@@ -186,7 +186,7 @@ properties each one changed are merged (later members win).
 ## Recursive schemas — `v.lazy`
 
 ```ts
-import { v, type Schema } from 'valiq';
+import { v, type Schema } from 'valiq-js';
 
 interface Comment {
   text: string;
@@ -230,7 +230,7 @@ The result is a normal number, boolean or date schema, so `v.coerce.number().int
 ## Escape hatches
 
 ```ts
-import { v } from 'valiq';
+import { v } from 'valiq-js';
 
 const Upload = v.instance(Blob); // value instanceof Blob
 const Bytes = v.custom<Uint8Array>((x) => x instanceof Uint8Array, 'Expected bytes');

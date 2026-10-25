@@ -1,4 +1,4 @@
-// Runs every example against the built package (node resolves "valiq" to this package itself).
+// Runs every example against the built package (node resolves "valiq-js" to this package itself).
 // Each example asserts its own results, so a non-zero exit means the docs are out of date.
 import { execFileSync } from 'node:child_process';
 import { readdirSync } from 'node:fs';

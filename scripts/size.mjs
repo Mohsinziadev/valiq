@@ -8,14 +8,14 @@ import { rolldown } from 'rolldown';
 const root = resolve(import.meta.dirname, '..');
 const tmp = resolve(root, '.size');
 const cases = {
-  'v.string() only': `import { v } from 'valiq'; export const s = v.string().min(1);`,
-  'object + string/number/array': `import { v } from 'valiq'; export const s = v.object({ a: v.string().email(), b: v.number().int(), c: v.array(v.boolean()) });`,
-  'everything from "valiq"': `export * from 'valiq';`,
-  fromJSONSchema: `import { fromJSONSchema } from 'valiq/json-schema'; export const s = fromJSONSchema({ type: 'string' });`,
-  'everything (both entry points)': `export * from 'valiq'; export * from 'valiq/json-schema';`,
+  'v.string() only': `import { v } from 'valiq-js'; export const s = v.string().min(1);`,
+  'object + string/number/array': `import { v } from 'valiq-js'; export const s = v.object({ a: v.string().email(), b: v.number().int(), c: v.array(v.boolean()) });`,
+  'everything from "valiq-js"': `export * from 'valiq-js';`,
+  fromJSONSchema: `import { fromJSONSchema } from 'valiq-js/json-schema'; export const s = fromJSONSchema({ type: 'string' });`,
+  'everything (both entry points)': `export * from 'valiq-js'; export * from 'valiq-js/json-schema';`,
 };
 // Regression budgets (bytes, min+gzip).
-const limits = { 'everything from "valiq"': 12_500, 'everything (both entry points)': 18_500 };
+const limits = { 'everything from "valiq-js"': 12_500, 'everything (both entry points)': 18_500 };
 // `--compare` adds equivalent entries for other libraries, for the docs.
 if (process.argv.includes('--compare')) {
   Object.assign(cases, {
@@ -37,7 +37,10 @@ for (const [name, code] of Object.entries(cases)) {
     input: file,
     platform: 'browser',
     resolve: {
-      alias: { 'valiq/json-schema': resolve(root, 'dist/json-schema/index.js'), valiq: resolve(root, 'dist/index.js') },
+      alias: {
+        'valiq-js/json-schema': resolve(root, 'dist/json-schema/index.js'),
+        'valiq-js': resolve(root, 'dist/index.js'),
+      },
     },
   });
   const { output } = await bundle.generate({ format: 'esm', minify: true });
