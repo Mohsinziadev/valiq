@@ -11,7 +11,7 @@ export const DRAFTS: { dir: string; draft: Draft }[] = [
   { dir: 'draft7', draft: 'draft-07' },
 ];
 
-/** Whole files covering keywords Valiq does not implement yet (they throw JSONSchemaError). */
+/** Whole files covering keywords valiq-js does not implement yet (they throw JSONSchemaError). */
 export const UNSUPPORTED_FILES = new Set([
   'unevaluatedItems.json',
   'unevaluatedProperties.json',

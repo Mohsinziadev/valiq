@@ -16,5 +16,5 @@ export declare class ValiqError extends Error {
   /** A multi-line report for logs and terminals. */
   format(): string;
 }
-/** True for errors thrown by Valiq's `parse()`. Works across realms and duplicate installs. */
+/** True for errors thrown by valiq-js's `parse()`. Works across realms and duplicate installs. */
 export declare function isValiqError(error: unknown): error is ValiqError;

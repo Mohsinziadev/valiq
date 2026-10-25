@@ -54,7 +54,7 @@ function Install() {
   );
 }
 
-/** A terminal printing what Valiq really returns for the sample user (computed at build time). */
+/** A terminal printing what valiq-js really returns for the sample user (computed at build time). */
 function Terminal() {
   const rows = fieldRows();
   const failed = rows.filter((r) => !r.ok);
@@ -63,7 +63,7 @@ function Terminal() {
     <div
       className="terminal"
       role="img"
-      aria-label="Terminal output of validating a user object with Valiq: three fields pass, two fail with too_small and invalid_format issues."
+      aria-label="Terminal output of validating a user object with valiq-js: three fields pass, two fail with too_small and invalid_format issues."
     >
       <div className="terminal-bar" aria-hidden="true">
         <span />
@@ -138,7 +138,7 @@ const FEATURES: { title: string; body: ReactNode; visual: ReactNode; art?: boole
     body: (
       <>
         Implements <a href="https://standardschema.dev">Standard Schema</a>, so tRPC, TanStack Form, React Hook
-        Form&apos;s Standard Schema resolver and Hono&apos;s standard validator accept Valiq schemas directly.
+        Form&apos;s Standard Schema resolver and Hono&apos;s standard validator accept valiq-js schemas directly.
       </>
     ),
     visual: (
@@ -244,7 +244,7 @@ export function Home() {
         <section className="why" aria-labelledby="why-title">
           <div>
             <p className="eyebrow eyebrow-brand">
-              <CheckIcon /> Why Valiq
+              <CheckIcon /> Why valiq-js
             </p>
             <h2 id="why-title" className="section-title">
               One schema.
@@ -290,7 +290,7 @@ export function Home() {
 
         <Playground />
 
-        <section className="stats" aria-label="Valiq in numbers">
+        <section className="stats" aria-label="valiq-js in numbers">
           {STATS.map((s) => (
             <div key={s.label} className="stat">
               <strong>{s.value}</strong>
@@ -363,7 +363,7 @@ export function Home() {
 
         <section className="cta art">
           <div className="cta-card">
-            <h2>Start validating with Valiq</h2>
+            <h2>Start validating with valiq-js</h2>
             <p>Describe your data once. Get types, validation and errors you can act on.</p>
             <div className="hero-actions">
               <a className="btn btn-brand" href={docHref('getting-started')}>

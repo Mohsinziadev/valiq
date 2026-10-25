@@ -1,6 +1,6 @@
 import { v, type AnySchema, type Issue } from 'valiq-js';
 
-/** The schema behind the hero's terminal. Its output is computed by Valiq while the page is built. */
+/** The schema behind the hero's terminal. Its output is computed by valiq-js while the page is built. */
 export const User = v.object({
   id: v.string().uuid(),
   email: v.string().trim().toLowerCase().email(),

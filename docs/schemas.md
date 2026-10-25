@@ -168,7 +168,7 @@ void [Id, Timestamped];
 ```
 
 A union returns the output of the first member that accepts the value. When every member is a
-`v.object` and they share a property whose values are distinct literals or enums, Valiq detects
+`v.object` and they share a property whose values are distinct literals or enums, valiq-js detects
 it as a discriminator: it selects the member in O(1) and reports only that member's issues, or
 `invalid_value` at the discriminator when no member matches.
 

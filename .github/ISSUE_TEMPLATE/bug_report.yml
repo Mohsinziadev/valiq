@@ -13,7 +13,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: Valiq version
+      label: valiq-js version
     validations:
       required: true
   - type: input

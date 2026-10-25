@@ -1,10 +1,10 @@
-# Valiq
+# valiq-js
 
 **Modern validation. Precise errors. Type-safe by design.**
 
-[Documentation and live playground](https://www.m2toolkit.com/npm-packages/valiq)
+[Documentation and live playground](https://www.m2toolkit.com/npm-packages/valiq-js)
 
-Valiq is a TypeScript-first validation library for JavaScript and TypeScript. You describe your data
+valiq-js is a TypeScript-first validation library for JavaScript and TypeScript. You describe your data
 once and get a runtime validator, an inferred TypeScript type, structured errors that are safe to
 send to clients or write to logs, and JSON Schema in both directions.
 
@@ -30,7 +30,7 @@ if (result.success) {
 }
 ```
 
-## Why Valiq
+## Why valiq-js
 
 - **One library for TypeScript schemas and JSON Schema.** Build schemas in TypeScript, or compile
   existing JSON Schema documents (2020-12, 2019-09, draft-07) with
@@ -54,11 +54,11 @@ if (result.success) {
   `new Function`, so it works under a strict Content Security Policy.
 - **Works with your stack.** Implements [Standard Schema](https://standardschema.dev) and Standard
   JSON Schema, so libraries that accept Standard Schema (such as tRPC, TanStack Form, React Hook
-  Form's Standard Schema resolver and Hono's standard validator) accept Valiq schemas directly.
+  Form's Standard Schema resolver and Hono's standard validator) accept valiq-js schemas directly.
 - **Zero dependencies.** ESM and CommonJS, Node.js 18+ and modern browsers. About 9 KB min+gzip for
   typical builder usage.
 
-Valiq does not try to beat Ajv at raw throughput: Ajv generates code and is about 3× faster on
+valiq-js does not try to beat Ajv at raw throughput: Ajv generates code and is about 3× faster on
 valid data. See [Performance](#performance) for measured numbers.
 
 ## Installation
@@ -66,9 +66,6 @@ valid data. See [Performance](#performance) for measured numbers.
 ```sh
 npm install valiq-js
 ```
-
-The library is called Valiq; on npm it is published as `valiq-js`, so imports use
-`'valiq-js'` and `'valiq-js/json-schema'`.
 
 Requirements: Node.js 18 or later, or any modern browser (ES2022). TypeScript 5.0+ is recommended
 for inference; `strict` mode is expected.
@@ -203,7 +200,7 @@ Product.parse({ sku: 'ABC-1234', price: 10 }); // typed { sku: string; price: nu
 Supported: draft 2020-12, 2019-09 and draft-07, including `$ref` (local, `$id`, `$anchor`,
 recursive, and pre-registered schemas through the `schemas` option), all composition keywords,
 `if`/`then`/`else`, dependencies, `contains` with min/max, and 15 formats. Against the official
-[JSON-Schema-Test-Suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite), Valiq passes
+[JSON-Schema-Test-Suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite), valiq-js passes
 **every test it runs** in the required suites: 1052 for 2020-12, 1032 for 2019-09 and 925 for
 draft-07.
 
@@ -238,13 +235,13 @@ const Amount = v
 
 ## Node.js, browsers and frameworks
 
-Valiq has no dependencies and uses only standard JavaScript APIs (no Node.js built-ins), so it
+valiq-js has no dependencies and uses only standard JavaScript APIs (no Node.js built-ins), so it
 runs in Node.js and browsers and should run unchanged in Deno, Bun and edge runtimes (only Node.js
 is covered by the test suite today). It ships ESM and CommonJS builds with type declarations for
 both.
 
 ```ts
-// Any library that accepts a Standard Schema accepts a Valiq schema:
+// Any library that accepts a Standard Schema accepts a valiq-js schema:
 import { v } from 'valiq-js';
 const Login = v.object({ email: v.string().email(), password: v.string().min(8) });
 const result = await Login['~standard'].validate({ email: 'dev@example.com', password: 'hunter22!' });
@@ -259,33 +256,33 @@ React usage is covered in [docs/examples.md](docs/examples.md#react-forms).
 ## Performance
 
 Measured with `npm run benchmark` (tinybench, 1 s per task) on Node.js 22.23.1 on an Apple M4,
-comparing valiq 0.1.0, ajv 8.20.0, zod 4.6.7 and valibot 1.5.0. Every library validates the same
+comparing valiq-js 0.1.0, ajv 8.20.0, zod 4.6.7 and valibot 1.5.0. Every library validates the same
 rules, and all accept unknown keys so that none of them copies the input. Higher is better.
 
-| Workload                                |  Valiq | Valiq (JSON Schema) |     Ajv |    Zod | Valibot |
-| --------------------------------------- | -----: | ------------------: | ------: | -----: | ------: |
-| Valid object (nested, 5 fields), ops/s  |  7.1 M |               4.1 M |  23.3 M |  3.5 M |   2.6 M |
-| Invalid object, all errors, ops/s       |  1.0 M |              0.82 M |  16.6 M |  1.4 M |   1.6 M |
-| Valid array of 1,000 objects, ops/s     |  7,832 |               4,396 |  38,307 |  3,576 |   2,723 |
-| Discriminated union, 300 items, ops/s   | 68,286 |    27,308 (`oneOf`) | 114,957 | 75,153 |  16,970 |
-| Define schema + first validation, ops/s |  520 k |                42 k |     422 |   17 k |   899 k |
+| Workload                                | valiq-js | valiq-js (JSON Schema) |     Ajv |    Zod | Valibot |
+| --------------------------------------- | -------: | ---------------------: | ------: | -----: | ------: |
+| Valid object (nested, 5 fields), ops/s  |    7.1 M |                  4.1 M |  23.3 M |  3.5 M |   2.6 M |
+| Invalid object, all errors, ops/s       |    1.0 M |                 0.82 M |  16.6 M |  1.4 M |   1.6 M |
+| Valid array of 1,000 objects, ops/s     |    7,832 |                  4,396 |  38,307 |  3,576 |   2,723 |
+| Discriminated union, 300 items, ops/s   |   68,286 |       27,308 (`oneOf`) | 114,957 | 75,153 |  16,970 |
+| Define schema + first validation, ops/s |    520 k |                   42 k |     422 |   17 k |   899 k |
 
-In short: Ajv is the fastest validator on hot paths because it generates JavaScript code. Valiq
+In short: Ajv is the fastest validator on hot paths because it generates JavaScript code. valiq-js
 does not generate code, which makes it CSP-safe. It is about 2× faster than Zod and 2.7× faster
 than Valibot on valid objects, and it starts up three orders of magnitude faster than Ajv's
 compiler (useful for serverless cold starts). On invalid input, Zod and Valibot are faster than
-Valiq when every error is collected. Numbers vary by machine and workload. Run the suite yourself;
+valiq-js when every error is collected. Numbers vary by machine and workload. Run the suite yourself;
 the methodology is in [docs/performance.md](docs/performance.md).
 
 Bundle size (min+gzip, measured with `npm run size -- --compare`): an object schema with string,
-number and array checks costs 9.4 KB with Valiq, 20.7 KB with Zod, 5.5 KB with `zod/mini`,
+number and array checks costs 9.4 KB with valiq-js, 20.7 KB with Zod, 5.5 KB with `zod/mini`,
 1.5 KB with Valibot and 34.6 KB with Ajv (no formats). Everything in `valiq-js` is 11.5 KB;
 `fromJSONSchema` adds about 6 KB.
 
 ## Security
 
 Validation checks shape and constraints. It is not sanitisation (it does not make strings safe for
-HTML or SQL) and not authorisation. Valiq is designed for untrusted input:
+HTML or SQL) and not authorisation. valiq-js is designed for untrusted input:
 
 - Own properties only: values inherited from a polluted `Object.prototype` are treated as missing,
   and `__proto__` keys are copied as data, never as prototypes.
@@ -302,7 +299,7 @@ See [docs/security.md](docs/security.md), and [SECURITY.md](SECURITY.md) to repo
 
 ## Documentation
 
-The [documentation site](https://www.m2toolkit.com/npm-packages/valiq) has every page below, search
+The [documentation site](https://www.m2toolkit.com/npm-packages/valiq-js) has every page below, search
 and a live playground.
 
 - [Getting started](docs/getting-started.md)
@@ -322,11 +319,11 @@ and a live playground.
 
 ## FAQ
 
-**Should I use Valiq or Ajv?** If you only validate JSON Schema documents on a very hot path, Ajv
-is faster. Pick Valiq if you want TypeScript-first schemas and JSON Schema in one library, errors
+**Should I use valiq-js or Ajv?** If you only validate JSON Schema documents on a very hot path, Ajv
+is faster. Pick valiq-js if you want TypeScript-first schemas and JSON Schema in one library, errors
 designed for users, strict schema checking with suggestions, fast startup or CSP compatibility.
 
-**Does Valiq strip unknown properties?** Not by default (the same as JSON Schema and Ajv). Use
+**Does valiq-js strip unknown properties?** Not by default (the same as JSON Schema and Ajv). Use
 `.strip()` to drop them, or `.strict()` to reject them. For API input, one of the two is
 recommended.
 

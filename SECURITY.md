@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Only the latest published minor version receives security fixes while Valiq is in 0.x.
+Only the latest published minor version receives security fixes while valiq-js is in 0.x.
 
 ## Reporting a vulnerability
 
@@ -10,9 +10,9 @@ Please report vulnerabilities privately. Do not open a public issue.
 
 - Use GitHub's private vulnerability reporting ("Report a vulnerability" under the repository's
   Security tab), or
-- email the maintainer at mohsinziadev@gmail.com with "valiq security" in the subject.
+- email the maintainer at mohsinziadev@gmail.com with "valiq-js security" in the subject.
 
-Include the Valiq version, a minimal schema and input that reproduce the problem, and the impact
+Include the valiq-js version, a minimal schema and input that reproduce the problem, and the impact
 you expect (for example "validation accepts X" or "validation hangs on Y"). You should get an
 acknowledgement within 5 working days. Once a fix is released, the advisory credits the reporter
 unless they prefer otherwise.

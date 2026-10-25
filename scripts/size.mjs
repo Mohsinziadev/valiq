@@ -1,4 +1,4 @@
-// Measures what Valiq adds to a browser bundle (minified + gzip) for typical imports, by bundling
+// Measures what valiq-js adds to a browser bundle (minified + gzip) for typical imports, by bundling
 // small entry files against dist/ with rolldown. Run after `npm run build`.
 import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';

@@ -1,6 +1,6 @@
 # TypeScript
 
-Valiq is written in strict TypeScript and tested with `strict` and `exactOptionalPropertyTypes`.
+valiq-js is written in strict TypeScript and tested with `strict` and `exactOptionalPropertyTypes`.
 Its type-level behaviour is covered by regression tests in [`type-tests/`](../type-tests).
 
 ## Inferring types
@@ -114,7 +114,7 @@ const port = parseOrDefault(v.number().int(), Number('80'), 3000); // number
 void port;
 ```
 
-`AnySchema` is `Schema<unknown, unknown>`; every Valiq schema is assignable to it.
+`AnySchema` is `Schema<unknown, unknown>`; every valiq-js schema is assignable to it.
 
 ## JSON Schema literals
 
@@ -137,7 +137,7 @@ sync.
 
 ## Standard Schema types
 
-Valiq schemas implement `StandardSchemaV1<Input, Output>`, so
+valiq-js schemas implement `StandardSchemaV1<Input, Output>`, so
 `StandardSchemaV1.InferOutput<typeof Schema>` works with any tool built on the standard.
 
 ## Compiler errors for misuse

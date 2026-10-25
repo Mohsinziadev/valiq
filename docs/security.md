@@ -1,14 +1,14 @@
 # Security
 
 Validation is a security boundary: it decides what reaches the rest of your code. This page
-describes what Valiq guarantees, what it does not, and how to use it safely. To report a
+describes what valiq-js guarantees, what it does not, and how to use it safely. To report a
 vulnerability, see [SECURITY.md](../SECURITY.md).
 
 ## What validation is and is not
 
 - **Validation** checks that data has the expected shape and satisfies constraints. That is
-  Valiq's job.
-- **Sanitisation** makes data safe for a particular sink (HTML, SQL, shell). Valiq does not do
+  valiq-js's job.
+- **Sanitisation** makes data safe for a particular sink (HTML, SQL, shell). valiq-js does not do
   this. A string that passes `v.string().max(100)` can still contain `<script>`. Escape at output,
   use parameterised queries.
 - **Authorisation** decides whether a user may perform an action. A valid request body says
@@ -17,7 +17,7 @@ vulnerability, see [SECURITY.md](../SECURITY.md).
 
 ## Guarantees
 
-**Prototype pollution.** Valiq never assigns through `__proto__`: copied objects receive
+**Prototype pollution.** valiq-js never assigns through `__proto__`: copied objects receive
 `__proto__` as an ordinary own property (as `JSON.parse` produces it). Only own properties are
 read, so a value inherited from a polluted `Object.prototype` is treated as missing and cannot
 satisfy a `required` property. These cases are covered in `tests/security.test.ts`.
@@ -47,7 +47,7 @@ inputs with a timing budget.
 Non-recursive schemas only descend as deep as the schema itself, so deeply nested input is
 harmless for them.
 
-**No code generation, no network.** Valiq never calls `eval` or `new Function` and never
+**No code generation, no network.** valiq-js never calls `eval` or `new Function` and never
 fetches `$ref` targets; remote schemas must be registered explicitly.
 
 **No values in messages.** Issue messages and fields contain schema information and type names,
@@ -62,7 +62,7 @@ never the input value. Object keys and array indexes do appear in paths.
 - **Untrusted schemas.** Compiling a JSON Schema from an untrusted source lets its author choose
   the patterns and the shape of the work. Review schemas, or restrict the keywords you accept.
 - **Your callbacks.** `.refine()`, `.transform()`, `v.custom()` and custom formats are your code.
-  Valiq does not catch their exceptions or limit their running time. Keep them pure and fast.
+  valiq-js does not catch their exceptions or limit their running time. Keep them pure and fast.
 - **Unknown keys.** By default unknown properties pass through untouched. For request bodies use
   `.strict()` or `.strip()` so that unexpected fields (`isAdmin`, `role`) never reach your
   database layer.
@@ -75,5 +75,5 @@ never the input value. Object keys and array indexes do appear in paths.
 
 - `hostname` does not validate punycode (`xn--`) labels. `email` is ASCII-only.
 - Errors from user callbacks propagate unchanged.
-- Valiq's own `.d.ts` types do not protect against data that bypasses validation (for example
+- valiq-js's own `.d.ts` types do not protect against data that bypasses validation (for example
   values cast with `as`).

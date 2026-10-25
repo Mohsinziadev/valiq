@@ -100,7 +100,7 @@ function findDiscriminator(options: readonly AnySchema[]): { key: string; map: M
     const map = new Map<unknown, number>();
     for (let i = 0; i < shapes.length; i++) {
       const schema = shapes[i]![key];
-      // Kind checks rather than instanceof, so schemas from a second copy of Valiq still work.
+      // Kind checks rather than instanceof, so schemas from a second copy of valiq-js still work.
       const values =
         schema?.kind === 'literal'
           ? [(schema as LiteralSchema<Literal>).value]

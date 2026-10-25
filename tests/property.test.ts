@@ -1,4 +1,4 @@
-// Property-based and differential tests (fast-check): Valiq's JSON Schema validator must agree with
+// Property-based and differential tests (fast-check): valiq-js's JSON Schema validator must agree with
 // Ajv, exported schemas must agree with their source, and no input may crash or be mutated.
 import Ajv2020 from 'ajv/dist/2020';
 import addFormats from 'ajv-formats';
@@ -14,7 +14,7 @@ const json = fc.jsonValue({ maxDepth: 4 });
 
 /**
  * Ajv checks multipleOf with `parseInt(x / d)`, which is wrong once the quotient reaches 1e21
- * (`parseInt(1e21) === 1`). Valiq is exact there (see the unit test below), so differential runs
+ * (`parseInt(1e21) === 1`). valiq-js is exact there (see the unit test below), so differential runs
  * skip such numbers.
  */
 function hasHugeNumber(value: unknown): boolean {

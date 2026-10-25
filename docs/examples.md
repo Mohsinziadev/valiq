@@ -12,11 +12,11 @@ in the test suite (`npm test`) and against the built package (`node scripts/run-
 | [json-schema.ts](../examples/json-schema.ts)             | `fromJSONSchema`, `$ref`, strict mode, `toJSONSchema`           |
 | [custom-validators.ts](../examples/custom-validators.ts) | `refine`, `custom`, brands, transform + pipe, custom formats    |
 | [compiled-reuse.ts](../examples/compiled-reuse.ts)       | defining schemas once, `is()` on hot paths                      |
-| [standard-schema.ts](../examples/standard-schema.ts)     | using Valiq through the Standard Schema interface               |
+| [standard-schema.ts](../examples/standard-schema.ts)     | using valiq-js through the Standard Schema interface            |
 
 ## React forms
 
-Valiq has no React dependency. Two common patterns follow. They are illustrative: they need React
+valiq-js has no React dependency. Two common patterns follow. They are illustrative: they need React
 and, for the second, React Hook Form, which this repository does not install.
 
 **Plain React state**, using `flatten()` for per-field messages:

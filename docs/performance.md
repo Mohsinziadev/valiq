@@ -1,8 +1,8 @@
 # Performance
 
-## How Valiq validates
+## How valiq-js validates
 
-The first time a schema is used, Valiq compiles it into a tree of specialised closures and caches
+The first time a schema is used, valiq-js compiles it into a tree of specialised closures and caches
 the result on the schema. It does not generate source code (`eval` / `new Function`), so it works
 under a Content Security Policy without `unsafe-eval`. The design choices that matter for speed:
 
@@ -36,7 +36,7 @@ rules in every library:
 - **invalid user**: five of those rules broken.
 - **users**: an array of 1,000 valid users.
 - **events**: 300 items of a three-member union discriminated by `type` (Zod
-  `discriminatedUnion`, Valibot `variant`, Valiq's automatic detection, Ajv `oneOf`).
+  `discriminatedUnion`, Valibot `variant`, valiq-js's automatic detection, Ajv `oneOf`).
 - **cold start**: create the schema (or compile it, for Ajv) and validate one value.
 
 Objects accept unknown keys in every library (Zod `looseObject`, Valibot `looseObject`), so none
@@ -45,36 +45,36 @@ all issues by default.
 
 ### Results
 
-Node.js 22.23.1, macOS on an Apple M4, valiq 0.1.0, ajv 8.20.0, zod 4.6.7, valibot 1.5.0.
+Node.js 22.23.1, macOS on an Apple M4, valiq-js 0.1.0, ajv 8.20.0, zod 4.6.7, valibot 1.5.0.
 Raw output: [`benchmarks/results/2026-10-25-node22-apple-m4.json`](../benchmarks/results/2026-10-25-node22-apple-m4.json).
 
-| Workload (operations per second)                                  |                  Valiq | Valiq JSON Schema |     Ajv |           Zod | Valibot |
-| ----------------------------------------------------------------- | ---------------------: | ----------------: | ------: | ------------: | ------: |
-| valid user (`safeParse`; Ajv `validate`)                          |                 7.11 M |     4.10 M (`is`) | 23.30 M |        3.53 M |  2.63 M |
-| valid user (`is`)                                                 |                 7.02 M |                   |         |               |         |
-| invalid user, all errors                                          |                0.998 M |           0.823 M | 16.60 M |        1.42 M |  1.58 M |
-| invalid user, stop at first error (`abortEarly`; Valiq also `is`) | 2.45 M / 23.9 M (`is`) |                 — |  25.7 M | — (no option) |  10.9 M |
-| 1,000 valid users                                                 |                  7,832 |             4,396 |  38,307 |         3,576 |   2,723 |
-| 300 union items                                                   |                 68,286 |            27,308 | 114,957 |        75,153 |  16,970 |
-| cold start                                                        |                519,773 |            42,253 |     422 |        17,035 | 898,515 |
+| Workload (operations per second)                                     |               valiq-js | valiq-js JSON Schema |     Ajv |           Zod | Valibot |
+| -------------------------------------------------------------------- | ---------------------: | -------------------: | ------: | ------------: | ------: |
+| valid user (`safeParse`; Ajv `validate`)                             |                 7.11 M |        4.10 M (`is`) | 23.30 M |        3.53 M |  2.63 M |
+| valid user (`is`)                                                    |                 7.02 M |                      |         |               |         |
+| invalid user, all errors                                             |                0.998 M |              0.823 M | 16.60 M |        1.42 M |  1.58 M |
+| invalid user, stop at first error (`abortEarly`; valiq-js also `is`) | 2.45 M / 23.9 M (`is`) |                    — |  25.7 M | — (no option) |  10.9 M |
+| 1,000 valid users                                                    |                  7,832 |                4,396 |  38,307 |         3,576 |   2,723 |
+| 300 union items                                                      |                 68,286 |               27,308 | 114,957 |        75,153 |  16,970 |
+| cold start                                                           |                519,773 |               42,253 |     422 |        17,035 | 898,515 |
 
 ### Reading the results
 
-- **Ajv is the fastest at validating**: about 3× Valiq on valid data and 15× on invalid data
+- **Ajv is the fastest at validating**: about 3× valiq-js on valid data and 15× on invalid data
   with all errors collected. It generates and evaluates JavaScript for each schema. If raw
   throughput on a hot path is your main constraint, use Ajv.
-- **Valiq is the fastest of the non-code-generating libraries** in these workloads on valid data:
+- **valiq-js is the fastest of the non-code-generating libraries** in these workloads on valid data:
   about 2× Zod and 2.7× Valibot. Zod 4 uses code generation when `new Function` is allowed, as it is
   here.
 - **On invalid data with all errors collected, Zod and Valibot are faster** (0.7 µs and 0.6 µs
-  against 1.0 µs). Valiq builds complete issues with messages and paths.
+  against 1.0 µs). valiq-js builds complete issues with messages and paths.
 - **Cold start** is where the approaches differ most: Ajv spends about 2.3 ms compiling this
-  schema; Valiq takes about 2 µs to define and first-run it. For serverless functions or CLIs
+  schema; valiq-js takes about 2 µs to define and first-run it. For serverless functions or CLIs
   that validate a few documents per process, startup dominates.
-- Valiq's JSON Schema validator is about 40% slower than its builder schemas because it follows
+- valiq-js's JSON Schema validator is about 40% slower than its builder schemas because it follows
   JSON Schema's rules (type-dependent keywords, `oneOf` must try every member).
 
-A second full run on the same machine stayed within ±10% of these numbers. Zod and Valiq swapped
+A second full run on the same machine stayed within ±10% of these numbers. Zod and valiq-js swapped
 places on the discriminated union (71k vs 74k ops/s), so treat that row as a tie.
 
 These are microbenchmarks on one machine. Results depend on the runtime, CPU, schema shape and
@@ -94,17 +94,17 @@ data. Run the suite on your own hardware and workloads before drawing conclusion
 `npm run size` bundles typical imports with rolldown (minified, gzip level 9).
 `npm run size -- --compare` adds the same measurement for other libraries.
 
-| Import                                   |      min | min+gzip |
-| ---------------------------------------- | -------: | -------: |
-| Valiq: `v.string()` only                 |  19.2 KB |   6.9 KB |
-| Valiq: object with string, number, array |  28.3 KB |   9.4 KB |
-| Valiq: everything in `valiq-js`          |  36.0 KB |  11.5 KB |
-| Valiq: `fromJSONSchema`                  |  38.6 KB |  12.8 KB |
-| Valiq: both entry points                 |  56.8 KB |  17.5 KB |
-| Zod 4: same object                       |  73.6 KB |  20.7 KB |
-| `zod/mini`: same object                  |  16.9 KB |   5.5 KB |
-| Valibot: same object                     |   4.5 KB |   1.5 KB |
-| Ajv: `new Ajv().compile()` (no formats)  | 118.1 KB |  34.6 KB |
+| Import                                      |      min | min+gzip |
+| ------------------------------------------- | -------: | -------: |
+| valiq-js: `v.string()` only                 |  19.2 KB |   6.9 KB |
+| valiq-js: object with string, number, array |  28.3 KB |   9.4 KB |
+| valiq-js: everything in `valiq-js`          |  36.0 KB |  11.5 KB |
+| valiq-js: `fromJSONSchema`                  |  38.6 KB |  12.8 KB |
+| valiq-js: both entry points                 |  56.8 KB |  17.5 KB |
+| Zod 4: same object                          |  73.6 KB |  20.7 KB |
+| `zod/mini`: same object                     |  16.9 KB |   5.5 KB |
+| Valibot: same object                        |   4.5 KB |   1.5 KB |
+| Ajv: `new Ajv().compile()` (no formats)     | 118.1 KB |  34.6 KB |
 
-Valibot's modular, function-based API is much smaller. Valiq's schema methods live on classes, so
+Valibot's modular, function-based API is much smaller. valiq-js's schema methods live on classes, so
 a used schema type brings all of its methods.

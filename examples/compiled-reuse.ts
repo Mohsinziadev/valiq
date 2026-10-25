@@ -1,4 +1,4 @@
-// Define schemas once, at module level, and reuse them. Valiq compiles a schema the first time it
+// Define schemas once, at module level, and reuse them. valiq-js compiles a schema the first time it
 // is used and caches the result on the schema object; creating schemas inside a request handler
 // would repeat that work on every call.
 import assert from 'node:assert/strict';

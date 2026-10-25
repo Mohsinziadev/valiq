@@ -98,10 +98,10 @@ export const NpmIcon = (p: P) => (
   </svg>
 );
 
-/** The Valiq mark: a check inside brackets, like a validated value. */
+/** The valiq-js mark: a check inside brackets, like a validated value. */
 export const Logo = () => (
   <span className="logo" aria-hidden="true">
-    <span className="logo-word">VALIQ</span>
+    <span className="logo-word">VALIQ-JS</span>
     <svg className="logo-mark" viewBox="0 0 30 24" width="30" height="24">
       <path
         d="M6 3C3.5 6 2.5 9 2.5 12s1 6 3.5 9M24 3c2.5 3 3.5 6 3.5 9s-1 6-3.5 9"

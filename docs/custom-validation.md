@@ -34,7 +34,7 @@ Things to know:
 
 - A refinement on an object only runs when every property is valid. A cross-field rule such as
   "passwords match" therefore appears once the fields themselves are fixed.
-- `check` must be free of side effects. For invalid input Valiq may run it more than once.
+- `check` must be free of side effects. For invalid input valiq-js may run it more than once.
 - Exceptions thrown by `check` are not caught. They propagate to the caller of
   `parse`/`safeParse`/`is`.
 - Refinements cannot be expressed in JSON Schema and are left out by `toJSONSchema`.

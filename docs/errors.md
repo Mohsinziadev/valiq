@@ -95,7 +95,7 @@ try {
   about the value itself; `fields` is keyed by `formatPath(issue.path)` (the object has no
   prototype, so keys such as `__proto__` are safe).
 - `format()` returns a multi-line report with `✖ message` and `→ at path` lines.
-- `isValiqError(error)` also recognises errors from another copy of Valiq (for example two
+- `isValiqError(error)` also recognises errors from another copy of valiq-js (for example two
   versions in one `node_modules`).
 
 `safeParse` creates its error without a stack trace, because it is returned rather than thrown;

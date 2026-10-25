@@ -1,4 +1,4 @@
-// Using existing JSON Schema documents, and exporting Valiq schemas to JSON Schema (e.g. OpenAPI).
+// Using existing JSON Schema documents, and exporting valiq-js schemas to JSON Schema (e.g. OpenAPI).
 import assert from 'node:assert/strict';
 import { toJSONSchema, v, type Infer } from 'valiq-js';
 import { fromJSONSchema } from 'valiq-js/json-schema';
@@ -32,7 +32,7 @@ assert.deepEqual(
 // 2. Typos in schemas fail at startup, not in production traffic.
 assert.throws(() => fromJSONSchema({ type: 'string', maxLenght: 10 }), /did you mean "maxLength"/);
 
-// 3. Export a Valiq schema, e.g. for an OpenAPI document or another service.
+// 3. Export a valiq-js schema, e.g. for an OpenAPI document or another service.
 const User = v.object({ id: v.string().uuid(), email: v.string().email(), age: v.number().int().min(0).optional() });
 const userSchema = toJSONSchema(User);
 assert.deepEqual(userSchema.required, ['id', 'email']);

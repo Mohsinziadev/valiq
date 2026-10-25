@@ -6,7 +6,7 @@
 npm install valiq-js
 ```
 
-Valiq has no dependencies. It needs Node.js 18+ or a modern browser, and works with both
+valiq-js has no dependencies. It needs Node.js 18+ or a modern browser, and works with both
 `import` and `require`:
 
 ```js

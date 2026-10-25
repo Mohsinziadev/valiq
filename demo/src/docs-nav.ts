@@ -10,7 +10,7 @@ export const DOC_GROUPS: DocGroup[] = [
   {
     title: 'Introduction',
     items: [
-      { slug: 'getting-started', title: 'Getting Started', blurb: 'Install Valiq and write your first schema.' },
+      { slug: 'getting-started', title: 'Getting Started', blurb: 'Install valiq-js and write your first schema.' },
       { slug: 'concepts', title: 'Core Concepts', blurb: 'parse vs safeParse vs is, input and output, immutability.' },
     ],
   },

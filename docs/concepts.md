@@ -34,7 +34,7 @@ caught; they propagate from all three methods.
 
 ## Validation, not transformation
 
-By default Valiq only checks data:
+By default valiq-js only checks data:
 
 - Valid input is returned as the **same object** (`schema.parse(x) === x`).
 - Nothing is coerced: `v.number()` rejects `"42"`.
@@ -51,7 +51,7 @@ Transformations are always explicit:
 | `.strip()`                                     | removes unknown object properties   |
 | `.transform(fn)`                               | maps the value with your function   |
 
-When a transformation changes a nested value, Valiq copies only the objects and arrays on the
+When a transformation changes a nested value, valiq-js copies only the objects and arrays on the
 path to that value ("copy on write"). Copies are plain objects with the original's own
 enumerable properties.
 

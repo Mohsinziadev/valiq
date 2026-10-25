@@ -1,6 +1,6 @@
 // Structural copies of the Standard Schema and Standard JSON Schema interfaces
 // (https://standardschema.dev, MIT). The spec asks implementers to copy them instead of
-// depending on @standard-schema/spec, so Valiq keeps zero runtime dependencies.
+// depending on @standard-schema/spec, so valiq-js keeps zero runtime dependencies.
 
 export interface StandardSchemaV1<Input = unknown, Output = Input> {
   readonly '~standard': StandardSchemaV1.Props<Input, Output>;

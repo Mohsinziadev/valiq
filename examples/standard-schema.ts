@@ -1,6 +1,6 @@
-// Valiq implements Standard Schema (https://standardschema.dev), so libraries that accept any
+// valiq-js implements Standard Schema (https://standardschema.dev), so libraries that accept any
 // Standard Schema (tRPC, TanStack Form, React Hook Form resolvers, Hono validators, ...) accept
-// Valiq schemas directly. This example uses the interface the same way such a library would.
+// valiq-js schemas directly. This example uses the interface the same way such a library would.
 import assert from 'node:assert/strict';
 import { v, type StandardSchemaV1 } from 'valiq-js';
 

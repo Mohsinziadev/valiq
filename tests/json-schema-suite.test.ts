@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DRAFTS, files, runFile, UNSUPPORTED_FILES } from './conformance';
 
-// Valiq asserts `format` by default (like most validators in practice). The 2020-12 suite's
+// valiq-js asserts `format` by default (like most validators in practice). The 2020-12 suite's
 // format.json checks the spec default, where `format` is annotation-only; it is run with
 // `formats: "annotate"` in that mode instead (see runFile).
 describe.each(DRAFTS)('JSON-Schema-Test-Suite $dir', ({ dir, draft }) => {

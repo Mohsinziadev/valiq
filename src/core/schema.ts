@@ -53,7 +53,7 @@ export type SafeParseResult<T> = SafeParseSuccess<T> | SafeParseFailure;
 
 type StandardProps<In, Out> = StandardSchemaV1.Props<In, Out> & StandardJSONSchemaV1.Props<In, Out>;
 
-/** Any Valiq schema. Use as a constraint: `<S extends AnySchema>`. */
+/** Any valiq-js schema. Use as a constraint: `<S extends AnySchema>`. */
 export type AnySchema = Schema<unknown, unknown>;
 
 /** The output type of a schema: what `parse` returns. */
@@ -223,7 +223,7 @@ export abstract class Schema<Out = unknown, In = Out>
 
   /**
    * Adds a custom check that runs after the schema itself passed. `check` must be side-effect
-   * free: Valiq may call it more than once for invalid input.
+   * free: valiq-js may call it more than once for invalid input.
    */
   refine(check: (value: Out) => boolean, options?: string | RefineOptions): this {
     const opts = typeof options === 'string' ? { message: options } : (options ?? {});

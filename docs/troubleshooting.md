@@ -7,11 +7,11 @@ metadata), prefix it with `x-` or pass `{ strict: false }`.
 **`Unknown format "..."`.** Register it with `customFormats: { name: /regex/ }`, or ignore formats
 with `{ formats: 'annotate' }`.
 
-**`Cannot resolve $ref "https://..."`.** Valiq never downloads schemas. Pass the referenced
+**`Cannot resolve $ref "https://..."`.** valiq-js never downloads schemas. Pass the referenced
 document in `schemas: [document]` (it needs an `$id`) or `schemas: { 'https://...': document }`.
 
 **`unevaluatedProperties is not supported yet`.** Rewrite with `additionalProperties`, or wrap
-the shared parts with `allOf` and list every allowed property. Valiq refuses these schemas rather
+the shared parts with `allOf` and list every allowed property. valiq-js refuses these schemas rather
 than validating them incompletely.
 
 **My object type has `prop?: string | undefined` instead of `prop?: string`.** That matches
@@ -42,7 +42,7 @@ input is untouched.
 **Can I validate asynchronously?** Not in 0.1. Refinements and transforms are synchronous. Run
 async checks (such as database lookups) after validation.
 
-**Does Valiq work in the browser?** Yes. It uses standard JavaScript only and has no
+**Does valiq-js work in the browser?** Yes. It uses standard JavaScript only and has no
 dependencies. Import `valiq-js/json-schema` only if you need it, so bundlers can leave it out.
 
 **Why are there two email rules?** `v.string().email()` is what web forms usually want (no quoted

@@ -1,6 +1,6 @@
 # JSON Schema
 
-Valiq compiles JSON Schema documents into the same kind of schema the builder API produces, and
+valiq-js compiles JSON Schema documents into the same kind of schema the builder API produces, and
 exports builder schemas to JSON Schema.
 
 ```ts
@@ -82,7 +82,7 @@ void Person;
 
 Typos in schemas are a common source of silent bugs: an unknown keyword is ignored by the JSON
 Schema specification, so `{ "maxLenght": 10 }` would accept any string. With `strict: true`
-(the default) Valiq throws instead:
+(the default) valiq-js throws instead:
 
 ```
 JSONSchemaError: Unknown keyword "maxLenght" (did you mean "maxLength"?); pass { strict: false } to ignore unknown keywords (at #/maxLenght)
@@ -162,7 +162,7 @@ Results against the official [JSON-Schema-Test-Suite](https://github.com/json-sc
 Skipped cases are the unsupported keywords listed above (`unevaluated*`, `$dynamicRef`,
 `$recursiveRef`, `vocabulary`) and tests that reference meta-schemas. In the required suites, the
 2020-12 and 2019-09 `format.json` files are run with `formats: 'annotate'` (the specification's
-default); every other file runs with Valiq's defaults. The optional format failures are the
+default); every other file runs with valiq-js's defaults. The optional format failures are the
 internationalised formats (`idn-*`, `iri*`) and punycode validation for `hostname`.
 
 ## toJSONSchema
@@ -204,13 +204,13 @@ Options:
 
 What is not represented: refinements (`.refine()`), and string checks that come after a
 transform when `io` is `'input'` (for example `.trim().min(2)` exports `{ type: 'string' }`).
-The exported schema therefore accepts a superset of what the Valiq schema accepts in those
+The exported schema therefore accepts a superset of what the valiq-js schema accepts in those
 cases, never a subset. Recursive `v.lazy` schemas are exported with `$defs` and `$ref`.
 `isoTime()` and `isoDateTime({ local: true })` export as `pattern` because their JSON Schema
 formats mean something different.
 
 The test suite compiles exported schemas with Ajv in strict mode and checks, with property-based
-tests, that Ajv and Valiq agree on random data.
+tests, that Ajv and valiq-js agree on random data.
 
 Every schema also implements Standard JSON Schema:
 `schema['~standard'].jsonSchema.input({ target: 'draft-2020-12' })`.

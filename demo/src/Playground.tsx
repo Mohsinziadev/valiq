@@ -125,7 +125,7 @@ export function Playground() {
           Try it live. Edit the input, watch the issues.
         </h2>
         <p className="section-lead">
-          Every result below is computed in your browser by the same Valiq source this page documents. Nothing is
+          Every result below is computed in your browser by the same valiq-js source this page documents. Nothing is
           mocked.
         </p>
       </div>

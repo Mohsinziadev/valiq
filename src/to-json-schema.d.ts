@@ -17,7 +17,7 @@ export interface ToJSONSchemaOptions {
 }
 type JSONObject = Record<string, unknown>;
 /**
- * Converts a Valiq schema to JSON Schema. Refinements are not represented; everything else either
+ * Converts a valiq-js schema to JSON Schema. Refinements are not represented; everything else either
  * converts exactly or follows the `unrepresentable` option.
  */
 export declare function toJSONSchema(schema: AnySchema, options?: ToJSONSchemaOptions): JSONObject;

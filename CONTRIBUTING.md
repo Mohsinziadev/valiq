@@ -1,4 +1,4 @@
-# Contributing to Valiq
+# Contributing to valiq-js
 
 Thanks for helping. Bug reports with a minimal reproduction are as valuable as code.
 
@@ -48,7 +48,7 @@ type-tests/        compile-time tests
 benchmarks/        benchmark workloads and runner
 examples/          runnable examples (executed by the tests)
 scripts/           build, size, smoke test, docs and conformance tooling
-demo/              documentation site and landing page (m2toolkit.com/npm-packages/valiq)
+demo/              documentation site and landing page (m2toolkit.com/npm-packages/valiq-js)
 ```
 
 ## Updating the JSON Schema test suite
@@ -60,7 +60,7 @@ checkout of https://github.com/json-schema-org/JSON-Schema-Test-Suite, update `C
 
 ## Landing page
 
-The documentation site at https://www.m2toolkit.com/npm-packages/valiq is built from `demo/` (Vite
+The documentation site at https://www.m2toolkit.com/npm-packages/valiq-js is built from `demo/` (Vite
 and React; neither is a dependency of the package).
 
 - `npm run dev:site` starts it locally; `npm run typecheck:site` type-checks it.
@@ -72,4 +72,4 @@ and React; neither is a dependency of the package).
 - `npm run build:site` prerenders the page into `site-dist/` with SEO tags and listing data.
   `scripts/build-site.mjs` is shared by every package on m2toolkit.com/npm-packages; per-package
   settings live in `site.config.json`. M2Toolkit pulls the page in with
-  `npm run sync:packages -- --only valiq` (see its `docs/NPM-PACKAGES.md`).
+  `npm run sync:packages -- --only valiq-js` (see its `docs/NPM-PACKAGES.md`).

@@ -53,7 +53,7 @@ export class ValiqError extends Error {
   }
 }
 
-/** True for errors thrown by Valiq's `parse()`. Works across realms and duplicate installs. */
+/** True for errors thrown by valiq-js's `parse()`. Works across realms and duplicate installs. */
 export function isValiqError(error: unknown): error is ValiqError {
   return (
     error instanceof ValiqError ||

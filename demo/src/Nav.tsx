@@ -38,7 +38,7 @@ export function Nav({ route, onSearch }: { route: Route; onSearch: () => void })
   return (
     <header className="nav" data-menu={menuOpen || undefined}>
       <div className="nav-inner">
-        <a className="nav-brand" href="#" aria-label="Valiq home" onClick={() => window.scrollTo(0, 0)}>
+        <a className="nav-brand" href="#" aria-label="valiq-js home" onClick={() => window.scrollTo(0, 0)}>
           <Logo />
         </a>
         <nav className="nav-links" aria-label="Main">
@@ -87,10 +87,10 @@ export function Nav({ route, onSearch }: { route: Route; onSearch: () => void })
             </span>
           </button>
           <span className="nav-divider" aria-hidden="true" />
-          <a className="nav-icon" href={REPO} target="_blank" rel="noreferrer" aria-label="Valiq on GitHub">
+          <a className="nav-icon" href={REPO} target="_blank" rel="noreferrer" aria-label="valiq-js on GitHub">
             <GitHubIcon width={20} height={20} />
           </a>
-          <a className="nav-icon" href={NPM_URL} target="_blank" rel="noreferrer" aria-label="Valiq on npm">
+          <a className="nav-icon" href={NPM_URL} target="_blank" rel="noreferrer" aria-label="valiq-js on npm">
             <NpmIcon width={22} height={22} />
           </a>
           <button

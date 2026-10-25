@@ -46,7 +46,7 @@ export interface JSONSchemaOptions {
   customFormats?: Record<string, RegExp | ((value: string) => boolean)>;
   /**
    * Other schemas that `$ref` may point to, as a list (each needs an `$id`) or keyed by URI.
-   * Valiq never fetches schemas over the network.
+   * valiq-js never fetches schemas over the network.
    */
   schemas?: readonly JSONSchemaDocument[] | Record<string, JSONSchemaDocument>;
   /** Builds pattern matchers, e.g. `(source) => new RE2(source, 'u')` to rule out ReDoS. */
@@ -1278,7 +1278,7 @@ export class Compiler {
   }
 }
 
-/** Adapts a JSON Schema validator to Valiq's `run` contract. */
+/** Adapts a JSON Schema validator to valiq-js's `run` contract. */
 export function toRun(validate: Validate): (value: unknown, ctx: Ctx) => unknown {
   return (value, ctx) => (validate(value, ctx) ? value : FAIL);
 }
