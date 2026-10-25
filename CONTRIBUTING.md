@@ -48,6 +48,7 @@ type-tests/        compile-time tests
 benchmarks/        benchmark workloads and runner
 examples/          runnable examples (executed by the tests)
 scripts/           build, size, smoke test, docs and conformance tooling
+demo/              documentation site and landing page (m2toolkit.com/npm-packages/valiq)
 ```
 
 ## Updating the JSON Schema test suite
@@ -56,3 +57,19 @@ The suite is vendored in `tests/fixtures/json-schema-test-suite` (commit in `COM
 it, copy `tests/draft2020-12`, `tests/draft2019-09`, `tests/draft7` and `remotes` from a newer
 checkout of https://github.com/json-schema-org/JSON-Schema-Test-Suite, update `COMMIT`, and run
 `npm run conformance`.
+
+## Landing page
+
+The documentation site at https://www.m2toolkit.com/npm-packages/valiq is built from `demo/` (Vite
+and React; neither is a dependency of the package).
+
+- `npm run dev:site` starts it locally; `npm run typecheck:site` type-checks it.
+- The docs pages are rendered from `docs/*.md` at build time (`demo/content-plugin.ts`), so editing
+  a page in `docs/` updates the site. The sidebar order lives in `demo/src/docs-nav.ts`; add a new
+  page there.
+- Code on the landing page and in the playground comes from `demo/snippets/`. Those files are real
+  modules: the playground runs the same files it displays.
+- `npm run build:site` prerenders the page into `site-dist/` with SEO tags and listing data.
+  `scripts/build-site.mjs` is shared by every package on m2toolkit.com/npm-packages; per-package
+  settings live in `site.config.json`. M2Toolkit pulls the page in with
+  `npm run sync:packages -- --only valiq` (see its `docs/NPM-PACKAGES.md`).

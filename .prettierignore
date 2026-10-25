@@ -4,3 +4,5 @@ coverage
 .smoke
 tests/fixtures
 package-lock.json
+site-dist
+demo/dist

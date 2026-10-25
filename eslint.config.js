@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', '.scratch', '.smoke', 'tests/fixtures']),
+  globalIgnores(['dist', 'coverage', '.scratch', '.smoke', 'tests/fixtures', 'site-dist', 'demo/dist']),
   {
     files: ['**/*.ts'],
     extends: [js.configs.recommended, tseslint.configs.recommended],
@@ -32,7 +32,12 @@ export default defineConfig([
     rules: { 'no-console': 'off' },
   },
   {
-    files: ['scripts/**/*.{mjs,ts}', 'benchmarks/**/*.{mjs,ts}', '*.config.{js,ts}'],
+    // Site snippets are displayed as documentation, like the examples.
+    files: ['demo/snippets/**/*.ts'],
+    rules: { 'no-console': 'off' },
+  },
+  {
+    files: ['scripts/**/*.{mjs,ts}', 'demo/*.ts', 'benchmarks/**/*.{mjs,ts}', '*.config.{js,ts}'],
     languageOptions: { globals: globals.node },
     rules: { 'no-console': 'off' },
   },

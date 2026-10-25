@@ -2,6 +2,8 @@
 
 **Modern validation. Precise errors. Type-safe by design.**
 
+[Documentation and live playground](https://www.m2toolkit.com/npm-packages/valiq)
+
 Valiq is a TypeScript-first validation library for JavaScript and TypeScript. You describe your data
 once and get a runtime validator, an inferred TypeScript type, structured errors that are safe to
 send to clients or write to logs, and JSON Schema in both directions.
@@ -296,6 +298,9 @@ HTML or SQL) and not authorisation. Valiq is designed for untrusted input:
 See [docs/security.md](docs/security.md), and [SECURITY.md](SECURITY.md) to report a vulnerability.
 
 ## Documentation
+
+The [documentation site](https://www.m2toolkit.com/npm-packages/valiq) has every page below, search
+and a live playground.
 
 - [Getting started](docs/getting-started.md)
 - [Core concepts](docs/concepts.md): parse vs safeParse vs is, input and output, immutability
